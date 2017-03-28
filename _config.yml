@@ -17,7 +17,7 @@ production_url : http://wkongzhu.github.io
 # more settings
 
 markdown: kramdown
-
+highlighter: pygments
 sass:
   sass_dir: css
   style:    expanded
