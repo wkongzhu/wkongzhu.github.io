@@ -16,8 +16,12 @@ production_url : http://wkongzhu.github.io
 ########
 # more settings
 
-markdown: kramdown
 highlighter: pygments
+markdown: kramdown
+kramdown:
+  input:         GFM
+  auto_ids:      true
+  auto_id_prefix: 'id-'
 sass:
   sass_dir: css
   style:    expanded
