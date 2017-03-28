@@ -15,13 +15,24 @@ production_url : http://wkongzhu.github.io
 
 ########
 # more settings
-
-highlighter: pygments
 markdown: kramdown
+highlighter: rouge
 kramdown:
-  input:         GFM
-  auto_ids:      true
-  auto_id_prefix: 'id-'
+  input: GFM
+  extensions:
+    - autolink
+    - footnotes
+    - smart
+  enable_coderay: true
+  syntax_highlighter: rouge
+  coderay:
+    line_numbers:  nil
+
+#kramdown:
+#  input:         GFM
+#  auto_ids:      true
+#  auto_id_prefix: 'id-'
+
 sass:
   sass_dir: css
   style:    expanded
