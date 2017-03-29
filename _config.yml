@@ -1,15 +1,7 @@
-###########
-# site.title, site.url, site.author.name
 
 title:   '芯芯向荣'
 author:
   name:  'YingH'
-
-## note: 
-#  use site.path in your templates to make it work for both protocols e.g. http and https
-#  use site.url only inside the web feed template (e.g. requires full url incl. protocol)
-#path: /
-#url:  'http://wkongzhu.github.io'
 
 production_url : http://wkongzhu.github.io
 
@@ -19,20 +11,17 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
+  auto_ids:      true
+  auto_id_prefix: 'id-'
   extensions:
     - autolink
     - footnotes
     - smart
   enable_coderay: true
   syntax_highlighter: rouge
-  syntax_highlighter_opts: {'line_numbers':true}  
+  syntax_highlighter_opts: 
+    line_numbers: true  
   
-
-#kramdown:
-#  input:         GFM
-#  auto_ids:      true
-#  auto_id_prefix: 'id-'
-
 sass:
   sass_dir: css
   style:    expanded
@@ -41,7 +30,6 @@ permalink: /:title.html
 
 exclude:
 - README.md
-
 
 safe: true
 lsi: false
