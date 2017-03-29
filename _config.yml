@@ -25,6 +25,8 @@ kramdown:
     - smart
   enable_coderay: true
   syntax_highlighter: rouge
+  syntax_highlighter_opts: {'line_numbers':true}  
+  
 
 #kramdown:
 #  input:         GFM
