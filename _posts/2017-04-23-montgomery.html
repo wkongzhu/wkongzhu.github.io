@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>蒙哥马利算法</title>
-<!-- 2017-04-25 周二 11:49 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -185,13 +184,10 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-1">1. 综述</a></li>
 <li><a href="#sec-2">2. 基本概念</a></li>
-<li><a href="#sec-3">3. 蒙哥马利预备知识</a>
-<ul>
-<li><a href="#sec-3-1">3.1. 蒙哥马利约减</a></li>
-<li><a href="#sec-3-2">3.2. 蒙哥马利乘模</a></li>
-<li><a href="#sec-3-3">3.3. 蒙哥马利幂模</a></li>
-</ul>
-</li>
+<li><a href="#sec-3">3. 蒙哥马利预备知识</a></li>
+<li><a href="#sec-4">4. 蒙哥马利约减</a></li>
+<li><a href="#sec-5">5. 蒙哥马利乘模</a></li>
+<li><a href="#sec-6">6. 蒙哥马利幂模</a></li>
 </ul>
 </div>
 </div>
@@ -490,10 +486,11 @@ $$\qquad=(((((y_0\cdot x)/10)+y_1\cdot x)/10)+y_2\cdot x)/10$$
 </dd>
 </dl>
 </div>
+</div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 蒙哥马利约减</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 蒙哥马利约减</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 蒙哥马利约减的定义如下:
 </p>
@@ -524,9 +521,9 @@ $$\qquad=(((((y_0\cdot x)/10)+y_1\cdot x)/10)+y_2\cdot x)/10$$
 </div>
 </div>
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 蒙哥马利乘模</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 蒙哥马利乘模</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 一个蒙哥马利乘模包括整数乘法和蒙哥马利约减, 现在我们有蒙哥马利表示法：
 </p>
@@ -624,9 +621,9 @@ $$\qquad\qquad547\ (mod\ 667)$$
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 蒙哥马利幂模</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 蒙哥马利幂模</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 最后, 才说到我们最开始提到的RSA的核心幂模运算, 先来看一下普通幂运算的算法是怎么得出来的。
 </p>
@@ -760,6 +757,8 @@ $$C6 =C5*C \ mod\  N =C^{15} \ mod\  N$$
 </div>
 </div>
 </div>
+<div id="postamble" class="status">
+<p class="validation"></p>
 </div>
 </body>
 </html>
