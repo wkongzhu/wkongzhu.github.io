@@ -26,9 +26,9 @@ title: "Montomery算法"
 
 这篇文章为大家梳理一下整个蒙哥马利算法的本质，蒙哥马利算法并不是一个独立的算法，而是三个相互独立又相互联系的算法集合，其中包括
 
-1.  蒙哥马利乘模，是用来计算$x\cdot y\ (mod\ N)​$
-2.  蒙哥马利约减，是用来计算$t\cdot \rho^{-1}\ (mod\ N)​$
-3.  蒙哥马利幂模，是用来计算$x^y\ (mod\ N)​$
+1.  蒙哥马利乘模，是用来计算  $x\cdot y\ (mod\ N)$​ 
+2.  蒙哥马利约减，是用来计算 $t\cdot \rho^{-1}\ (mod\ N)​$
+3.  蒙哥马利幂模，是用来计算 $x^y\ (mod\ N)​$
 
 其中蒙哥马利幂乘是RSA加密算法的核心部分。
 
@@ -48,19 +48,20 @@ $Z_N=\left\{0,1,2,\cdots,N-1\right\}$
 
 在剩余类环上，有两种重要的运算，一类是简单运算，也就是加法和减法，另一类复杂运算，也就是乘法。我们比较熟悉的是自然数集上的运算，下面看下怎么从自然数集的运算演变成剩余类环上的运算。
 
--   对于加法运算，如果计算 $x\pm y\ (mod\ N), (0\leqslant x,y \lt N)​$
-    试想自然数集上的 $x\pm y​$,
+- 对于加法运算，如果计算 $x\pm y\ (mod\ N), (0\leqslant x,y \lt N)$
+    试想自然数集上的 $x\pm y$,
     $$\qquad 0\leqslant x+y\leqslant 2\cdot(N-1)​$$
-    $$-(N-1)\leqslant x-y\leqslant (N-1)​$$
+
+    $$-(N-1)\leqslant x-y\leqslant (N-1)$$
 
     我们可以简单的通过加减N来实现从自然数到剩余类集的转换.
 
 - 另外一类是乘法操作，也就是 $x\cdot y\ (mod\ N), (0\leqslant x,y\lt N)​$, 那么
 
-    $0\leqslant x\cdot y\leqslant (N-1)^2$
+    $0\leqslant x\cdot y\leqslant (N-1)^2​$
 
-    如果在自然数集下，令 $t=x\cdot y$, 那么对于 $\mod N$ 我们需要计算
-    $$t-（N\cdot \lfloor\frac{t}{N}\rfloor）$$
+    如果在自然数集下，令 $t=x\cdot y​$, 那么对于 $\mod N​$ 我们需要计算
+    $$t-（N\cdot \lfloor\frac{t}{N}\rfloor）​$$
 
     加减操作很简单，具体的算这里就不细说了，我们用 $Z_N-ADD$ 来代表剩余类环上的加法操作。
     既然我们可以做加法操作，那么我们就可以扩展到乘法操作，算法如下
