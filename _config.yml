@@ -8,7 +8,7 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : 芯芯向荣
+title : 芯有所想
 tagline: 精益求精
 author :
 #  name : Wkong
@@ -25,6 +25,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
+encoding: utf-8
 production_url : http://wkongzhu.github.io
 highlighter: rouge
 kramdown:
