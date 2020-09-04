@@ -15,18 +15,18 @@ title: "Montomery算法"
 2.  蒙哥马利约减，是用来计算 $t\cdot \rho^{-1}\ (mod\ N)​$
 3.  蒙哥马利幂模，是用来计算 $x^y\ (mod\ N)​$
 
-其中蒙哥马利幂乘是RSA加密算法的核心部分。
+其中蒙哥马利幂模是RSA加密算法的核心部分。
 
 # 2 基本概念
 
 梳理几个概念，试想一个集合是整数模N之后得到的
-$Z_N=\{0,1,2,\cdots,N-1\}$
+$Z_N=\{0,1,2,\cdots,N-1\}​$
 
 注：N在base-b进制下有 $l_N​$ 位。 比如10进制和100进制，都属于 $base-10​$ 进制，因为$100=10^2​$, 所以b=10。在10进制下，667的 $l_N=3​$
 
 这样的集合叫做N的剩余类环，任何属于这个集合$Z_N​$的$x​$满足以下两个条件：
 
-1.  正整数
+1.  是正整数
 2.  最大长度是 $l_N​$
 
 这篇文章中讲到的蒙哥马利算法就是用来计算基于$Z_N​$集合上的运算, 简单讲一下原因，因为RSA是基于大数运算的，通常是1024bit或2048bit，而我们的计算机不可能存储完整的大整数，因为占空间太大，而且也没必要。因此，这种基于大数运算的加密体系在计算的时候都是基于 $Z_N​$ 集合的，自然，蒙哥马利算法也是基于 $Z_N​$.
@@ -35,7 +35,8 @@ $Z_N=\{0,1,2,\cdots,N-1\}$
 
 - 对于加法运算，如果计算  $x\pm y\ (mod\ N), (0\leqslant x,y \lt N)$
     试想自然数集上的 $x\pm y$,
-    $$\qquad 0\leqslant x+y\leqslant 2\cdot(N-1)$$ ;
+    $$\qquad 0\leqslant x+y\leqslant 2\cdot(N-1)$$ 
+
     $$-(N-1)\leqslant x-y\leqslant (N-1)$$
 
     我们可以简单的通过加减N来实现从自然数到剩余类集的转换.
@@ -93,10 +94,12 @@ $x\cdot y=x\cdot \sum_{i=0}^{l_y-1}y_i \cdot b^i$
 
 $\qquad=\sum_{i=0}^{l_y-1}y_i \cdot x \cdot b^i$
 
-尝试下面一个例子，10进制下（也就是b=10），y=456（也就是 $l_n=3$ ）,计算 $x\cdot y$, 公式可演变如下：
+尝试下面一个例子，10进制下（也就是b=10），y=456（也就是 $l_n=3​$ ）,计算 $x\cdot y​$, 公式可演变如下：
 
 $$x\cdot y=(y_{0}\cdot x\cdot 10^{0})+(y_{1}\cdot x\cdot 10^{1})+(y_{2}\cdot x\cdot 10^{2})$$
+
 $$\qquad=(y_{0}\cdot x\cdot 0)+(y_{1}\cdot x\cdot 10)+(y_{2}\cdot x\cdot 100)$$
+
 $$\qquad=(y_{0}\cdot x)+10\cdot(y_{1}\cdot x+10\cdot(y_{2}\cdot x\cdot +10\cdot(0)))$$
 
 最后一次演变其实就是用霍纳法则(**Horner’s rule**)所讲的规则，关于霍纳法则，可以自行百度。
@@ -185,9 +188,11 @@ def Zn_Mul_DIV2(x, y):
 
 考虑这样两个算法
 
--   第一个是输入 $x​$ 和 $y​$, 计算 $x \cdot y \cdot \rho^{-1}​$
--   第二个算法, 输入一个 $t$, 计算 $t \cdot \rho^{-1}$
-       $$x\cdot y\ (mod\ 667)=((x\cdot1000)\cdot(y\cdot1000)/1000)/1000\ (mod\ 667)$$
+- 第一个是输入 $x​$ 和 $y​$, 计算 $x \cdot y \cdot \rho^{-1}​$
+
+- 第二个算法, 输入一个 $t$, 计算 $t \cdot \rho^{-1}$
+
+     $$x\cdot y\ (mod\ 667)=((x\cdot1000)\cdot(y\cdot1000)/1000)/1000\ (mod\ 667)$$
 
 是不是变成了我们需要的 $(x\cdot y)/1000\ (mod\ 667)​$ 模式, 而且这个转变过程是不是可以通过上面两个算法来实现,
 输入值如果是 $(x\cdot1000)​$ 和 $(y\cdot1000)​$, 则通过第一个算法可以得到 $((x\cdot1000)\cdot(y\cdot1000)/1000)​$,
@@ -206,7 +211,7 @@ def Zn_Mul_DIV2(x, y):
 
 -   **蒙哥马利参数:** 给定一个 $N$, $N$ 在b进制（例如, 二进制时, b=2）下共有 $l$ 位, $gcd(N,b)=1$,
     先预计算以下几个值(这就是前面提到的特性之一, 需要预计算）：
-    $\rho = b^k$ 指定一个最小的 $k$, 使得 $b^k>N$. 也就是$N$在$b$进制下有$k$位，$k=l_N$
+    $\rho = b^k$ 指定一个最小的 $k$, 使得 $b^k>N$. 也就是$N$在$b$进制下有$k$位，$k=l_N$,
     $\omega = -N^{-1} (mod\ \rho)$
 
     这两个参数是做什么用的呢, 你对照前面的演变过程可以猜到 $\rho​$ 就是前面演变中的 $1000​$, 而 $\omega​$
@@ -250,13 +255,14 @@ def mont_reduce(t):
 一个蒙哥马利乘模包括整数乘法和蒙哥马利约减, 现在我们有蒙哥马利表示法：
 
 $$\hat{x}=x\cdot\rho\ (mod\ N)$$
+
 $$\hat{y}=y\cdot\rho\ (mod\ N)$$
 
 它们相乘的结果是
 
-$$t=\hat{x}\cdot\hat{y}$$
-$$\ =(x\cdot\rho)\cdot(y\cdot\rho)$$
-$$\ =(x\cdot y)\cdot\rho^2$$
+$$t=\hat{x}\cdot\hat{y}​$$
+$$\ =(x\cdot\rho)\cdot(y\cdot\rho)​$$
+$$\ =(x\cdot y)\cdot\rho^2​$$
 
 最后, 用一次蒙哥马利约减得到结果
 
@@ -272,14 +278,17 @@ $$\omega=-N^{-1}\ (mod\ \rho)=-667^{-1}\ (mod\ \rho)=997​$$
 
 因为 $x=421​$, 所以 $\hat{x}=x\cdot\rho(mod\ N)=421\cdot1000(mod\ 667)=123​$
 
-因为 $y=422$, 所以 $\hat{y}=y\cdot\rho(mod\ N)=422\cdot1000(mod\ 667)=456$
+因为 $y=422​$, 所以 $\hat{y}=y\cdot\rho(mod\ N)=422\cdot1000(mod\ 667)=456​$
 
-所以计算 $\hat{x}$ 和 $\hat{y}$ 蒙哥马利乘结果是
+所以计算 $\hat{x}​$ 和 $\hat{y}​$ 蒙哥马利乘结果是
 
-$$\hat{x}\cdot\hat{y}\cdot\rho^{-1}=(421\cdot1000\cdot422\cdot1000)\cdot1000^{-1}\ (mod\ 667)​$$
-$$\qquad\qquad(421\cdot422)\cdot1000\ (mod\ 667)​$$
-$$\qquad\qquad(240)\cdot1000\ (mod\ 667)​$$
-$$\qquad\qquad547\ (mod\ 667)​$$
+$$\hat{x}\cdot\hat{y}\cdot\rho^{-1}=(421\cdot1000\cdot422\cdot1000)\cdot1000^{-1}\ (mod\ 667)$$
+
+$$\qquad\qquad=(421\cdot422)\cdot1000\ (mod\ 667)$$
+
+$$\qquad\qquad=(240)\cdot1000\ (mod\ 667)$$
+
+$$\qquad\qquad=547\ (mod\ 667)$$
 
 然后总结一下蒙哥马利约减和蒙哥马利乘法的伪代码实现, 这个算法其实就是从蒙哥马利预备知识讲到的算法演变来的。
 
