@@ -271,4 +271,125 @@ module top;
 endmodule: top
 ```
 
+#  SystemVerilog——容器类型(2):List
+
+英文来源：http://systemverilog.co/wiki/Lists
+
+##  Lists
+
+请不要使用List.vh -- 不建议使用 (在IEEE 1800-2009标准中). 请看本文章最后.
+
+### 标准List.vh包
+
+IEEE 1800-2005标准定义了一个链表包. 此链表没有被编译器内建，所以必须将List.vh包含进来才能使用.
+
+此文件实现了一个双向链表。此数据结构适用于，需要多次对其中间部分进行插入对象。但是索引操作代价较大，不是固定时间消耗。当有对象插入的时候，链表容器的大小可以动态调整。
+
+当需要很多索引操作的时候，请不要使用表结构。当表越来越大时，索引操作越来越耗时间。因为，对于每次索引操作，必须从开头遍历到需要访问的成员。最佳使用表的方式是使用迭代的情况。
+
+为了使用表，必须包含此文件。一旦参数化了一个表的实现， 创建一个类型为T的链表如下： 
+
+```verilog
+`include <List.vh>
+...
+List#(T) dl; // dl is a List of type 'T' objects
+List_Iterator#(T) dl_itor;
+ 
+// Alternately use typedef to create new type
+typedef List#(T) ListT;
+typedef List_Iterator#(T) ListT_Iterator;
+ 
+ListT dlt; // dlt is a List of type 'T" objects
+ListT_Iterator dlt_itor;
+```
+
+### **IEEE 1800-2009中不建议使用**
+
+最新的SystemVerilog标准不建议使用List.vh. 为什么?
+
+mantis缺陷追踪系统中这部分记录的说明[[1\]](http://systemverilog.co/wiki/Lists#cite_note-0), List.vh的实现有些问题，用到了参数化类，但是类本身不是包的一部分. 使用`include方式用户可能会在多个名字空间中包含此文件，导致对链表结构有重复的多重定义，并且可能互不兼容。 
+
+后来，有提到可能会实现一个更加完整的STL类似的通用数据结构，使之成为SystemVerilog标准的一部分。但是短期内很难实现。
+
+**参考文献**
+
+1. [↑](http://systemverilog.co/wiki/Lists#cite_ref-0) *SystemVerilog Mantis*, 2006, "[Issues with List.vh](http://www.eda.org/mantis/bug_view_page.php?bug_id=1256)", accessed on August 24 2010 
+
+#  SystemVerilog——容器类型(3):队列 
+
+英文来源：http://systemverilog.co/wiki/Queues
+
+##  队列 
+
+​         SystemVerilog语言手册提供了队列容器， 基本上是一个双端口队列[[1\]](http://systemverilog.co/wiki/Queues#cite_note-0). 队列就好象一个一维数组，可以自动在两端增长和减小。队列数据结构有如下特征： 
+
+1. 当新增或者删除成员的时候，队列的大小自动调整. 
+2. 任意成员的访问时间固定. 
+3. 队列首尾插入新成员的时间固定. 
+4. 支持通用的SystemVerilog数组操作，比如索引，分段，赋值，相等，连接. 
+
+​        SystemVerilog中的队列很像C++ STL库中的std::deque. 为了更好的理解此数据结构的功能以及使用限制，最好对其实现方式有一定了解。 尽管语言手册上并没有其详细的实现细节，右图演示了其内部实现。虽然也有其他的实现方式，但是这种方式简单，详实，足够我们理解。[[2\]](http://systemverilog.co/wiki/Queues#cite_note-1).
+
+​     当队列被声明后，它将被分配一块连续的内存区域，其头尾迭代指针被初始化用来跟踪队列两端的状态。如果一直往队列的某一段增加成员，这块内存最终将被耗尽，此时，内存管理器会从系统中再分配一块内存用来存放新的数据。 当需要访问某一个特定的成员时，内存管理器简单的查询该成员存放的相应内存块。一旦找到其位置，访问该成员仅仅需要一个类似的数组访问操作。
+
+   当成员从队列的某一端被删除时，有可能让内存块得到释放，内存管理器将此内存释放给系统.
+
+   现在我们来看看在队列中间增加和删除一个成员的操作方式。因为内存块本身是连续且固定大小的，这些操作可能导致这些数据成员的物理存储位置移动以提供位置给新插入的成员（删除的时候，是填补空位）. 根据列表的长度和操作成员的位置，插入和删除操作可能会移动很多成员，因此队列的插入和删除操作不是固定时间。
+
+**队列的声明和使用**
+
+​     SystemVerilog中的队列声明是通过在标识符加后缀[$]. 例如，声明一个unsigned int类型的队列，使用如下方式：
+
+| 1    | int unsigned intQ[$]; |
+| ---- | --------------------- |
+|      |                       |
+
+​         缺省时，队列没有任何成员。正如数组一样，队列可以在声明的时候被初始化为一些成员. 这些用来初始化队列的成员可以是文字型数组，也可以来自另外一个已经存在的数组:
+
+| 1  2  3  4  5  6  7 | // Initializing a Queue  int unsigned intQ[$] = {1, 2, 3, 5, 8,  13};     // An already existing array may be used  to  // initialize a queue  int unsigned intDA[] = {1, 2, 3, 5, 8,  13};  int unsigned intQalt[$] = intDA; |
+| ------------------- | ------------------------------------------------------------ |
+|                     |                                                              |
+
+​    队列声明可以限制长度。限制长度的队列成员将不会超过最大长度. 如果你只需要一个小队列，并且确认不会超过某个范围，那么最好声明成限制长度的队列。特别是队列本身是类的一部分。如果没有声明为限制长度，那么队列至少会消耗一整个内存块(如上描述的架构). 一个内存块一般占用1K甚至更多(由编译器实现决定). 为了让队列消耗更少的内存，队列声明为限制长度的：
+
+| 1  2 | // A queue that can grow only up to a  size of 32  int unsigned intBQ[$:32]; |
+| ---- | ------------------------------------------------------------ |
+|      |                                                              |
+
+​     一旦队列被声明，其成员可以像普通的数组一样被访问。实际上，SystemVerilog手册认为队列是通用未打包的数组的一种[[3\]](http://systemverilog.co/wiki/Queues#cite_note-2)[[4\]](http://systemverilog.co/wiki/Queues#cite_note-3). 类似其他数组，队列通过值传递。如果需要传递队列的引用，需要将参数声明为ref.
+
+队列可以和其他队列以及其他类型的数组直接进行复制[[5\]](http://systemverilog.co/wiki/Queues#cite_note-4).
+
+ 
+
+**队列的方法和操作**
+
+ 
+
+​    除了所有的数组都支持的索引和片选操作，SystemVerilog队列还支持许多其他操作：
+
+| **队列的方法和操作**  |                                                              |      |      |      |      |      |      |      |      |
+| --------------------- | ------------------------------------------------------------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **方法****/****操作** | **功能描述**                                                 |      |      |      |      |      |      |      |      |
+| q[a]                  | 索引操作——返回对应索引的成员。如果超出范围，**则返回此成员类型的缺省值。** |      |      |      |      |      |      |      |      |
+| q[a:b]                | 片选操作——返回指定范围的队列成员。如果a为负数，则从0开始，如果b大于最后成员的索引，则截至到最后一个成员。 |      |      |      |      |      |      |      |      |
+| q.size()              | 返回队列中成员的个数                                         |      |      |      |      |      |      |      |      |
+| q.insert(index,item)  | 指定索引处插入item. 第1个参数index必须是整数，第2个参数item必须和队列成员类型一致。如果队列已经到达设定的大小(队列满)，则最后一个成员被隐式的删除 |      |      |      |      |      |      |      |      |
+| q.delete(index)       | 从队列中删除对应索引的成员                                   |      |      |      |      |      |      |      |      |
+| q.delete()            | delete方法被重载。当没有索引参数的时候，整个队列被清除，等价于: q = {}. |      |      |      |      |      |      |      |      |
+| q.push_back(item)     | 将item增加到队列尾部，如果队列满了，操作将失败               |      |      |      |      |      |      |      |      |
+| q.pop_back()          | 删除并返回队列的最后一个成员                                 |      |      |      |      |      |      |      |      |
+| q.push_front(item)    | 将item加到队列前面。如果队列已经满了，**则最后一个成员将被隐式的丢掉** |      |      |      |      |      |      |      |      |
+| q.pop_front()         | 删除并返回队列的第一个成员                                   |      |      |      |      |      |      |      |      |
+
+ 
+
+ **参考文献** 
+
+1. [↑](http://systemverilog.co/wiki/Queues#cite_ref-0) *Wikipedia*, "[Double-ended queue](http://en.wikipedia.org/wiki/Double-ended_queue)", accessed on August     25 2010 
+2. [↑](http://systemverilog.co/wiki/Queues#cite_ref-1) Nicolai M. Josuttis, *Addison Wesley*,     1999, "[Deque, Section 6.3 of The C++ Standard Library](http://books.google.com/books?id=n9VEG2Gp5pkC)",     accessed on September 02 2010 
+3. [↑](http://systemverilog.co/wiki/Queues#cite_ref-2) *IEEE 1800-09*, Section 7.4 
+4. [↑](http://systemverilog.co/wiki/Queues#cite_ref-3) *SVUG*,     "[SV language query related to dynamic array](http://svug.org/Forum/tabid/57/view/topic/postid/997/Default.aspx)",     accessed on September 02 2010 
+5. [↑](http://systemverilog.co/wiki/Queues#cite_ref-4)     Puneet, *Coverification Blog*, 2009, "[Copying arrays and queues in SystemVerilog](http://coverification.com/2009/07/24/copying-arrays-and-queues-in-systemverilog/)",     accessed on September 02 2010 
+
  
