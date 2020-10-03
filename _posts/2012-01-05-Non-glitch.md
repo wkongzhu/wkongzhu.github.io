@@ -10,7 +10,7 @@ title: "防毛刺时钟切换电路的设计思想"
 
 EETIMES上有一篇时钟切换电路的文章，
 
-[non_glitch_mux]: https://www.eetimes.com/techniques-to-make-clock-switching-glitch-free/	"Techniques to make clock switching glitch free"
+https://www.eetimes.com/techniques-to-make-clock-switching-glitch-free/
 
 这篇文章讲述了时钟切换的时候毛刺(glitch)带来的危害，以及如何设计防止毛刺发生的时钟切换电路。但是没有讲到电路设计的构思从何而来，大家看了之后知道直接用这个电路，但是假如不看这篇文章，自己从头设计还是无从下手。
 
