@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 clkmux0.svg 页-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="2.39974in" height="1.33599in"
+		viewBox="0 0 172.781 96.1913" xml:space="preserve" color-interpolation-filters="sRGB" class="st6">
+	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st2 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st3 {fill:#000000;font-family:YaHei Consolas Hybrid;font-size:0.75em}
+		.st4 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st5 {font-size:1em}
+		.st6 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>页-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="电气" v:index="0"/>
+		<v:layer v:name="连接线" v:index="1"/>
+		<g id="group1-1" transform="translate(55.57,-26.6948)" v:mID="1" v:groupContext="group">
+			<title>工作表.1</title>
+			<g id="shape2-2" v:mID="2" v:groupContext="shape" transform="translate(110.365,39.4984) rotate(90)">
+				<title>工作表.2</title>
+				<path d="M0 96.19 L56.69 96.19" class="st1"/>
+			</g>
+			<g id="shape3-5" v:mID="3" v:groupContext="shape" transform="translate(138.711,53.6716) rotate(90)">
+				<title>工作表.3</title>
+				<path d="M0 96.19 L28.35 96.19" class="st1"/>
+			</g>
+			<g id="shape4-8" v:mID="4" v:groupContext="shape" transform="translate(-0.498379,139.708) rotate(-153.435)">
+				<title>工作表.4</title>
+				<path d="M0 96.19 L31.69 96.19" class="st1"/>
+			</g>
+			<g id="shape5-11" v:mID="5" v:groupContext="shape" transform="translate(-28.8448,10.1552) rotate(-26.5651)">
+				<title>工作表.5</title>
+				<path d="M0 96.19 L31.69 96.19" class="st1"/>
+			</g>
+			<g id="shape6-14" v:mID="6" v:groupContext="shape" transform="translate(14.1732,-42.5197) scale(-1,1)">
+				<title>工作表.6</title>
+				<path d="M0 96.19 L14.17 96.19" class="st1"/>
+			</g>
+			<g id="shape7-17" v:mID="7" v:groupContext="shape" transform="translate(14.1732,-14.1732) scale(-1,1)">
+				<title>工作表.7</title>
+				<path d="M0 96.19 L14.17 96.19" class="st1"/>
+			</g>
+			<g id="shape8-20" v:mID="8" v:groupContext="shape" transform="translate(42.5197,164.036) scale(1,-1)">
+				<title>工作表.8</title>
+				<path d="M0 96.19 L14.17 96.19" class="st1"/>
+			</g>
+			<g id="shape9-23" v:mID="9" v:groupContext="shape" transform="translate(14.1732,-9.92126)">
+				<title>工作表.9</title>
+				<desc>1</desc>
+				<v:textBlock v:margins="rect(1,1,1,1)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="4.96063" cy="91.2307" width="9.93" height="9.92126"/>
+				<rect x="0" y="86.2701" width="9.92126" height="9.92126" class="st2"/>
+				<text x="2.49" y="95.37" class="st3" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>1</text>			</g>
+			<g id="shape10-26" v:mID="10" v:groupContext="shape" transform="translate(14.1732,-37.5591)">
+				<title>工作表.10</title>
+				<desc>0</desc>
+				<v:textBlock v:margins="rect(1,1,1,1)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="4.96063" cy="91.2307" width="9.93" height="9.92126"/>
+				<rect x="0" y="86.2701" width="9.92126" height="9.92126" class="st2"/>
+				<text x="2.49" y="95.37" class="st3" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>0</text>			</g>
+		</g>
+		<g id="shape11-29" v:mID="11" v:groupContext="shape" v:layerMember="0" transform="translate(2.74248,-78.0728)">
+			<title>工作表.11</title>
+			<desc>clk0</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Form" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="visDescription" v:val="VT4(单向或双向输入/输出端口。 )"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(1,1,1,1)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="10.6299" cy="84.4746" width="26.75" height="12.8036"/>
+			<path d="M0 93.53 L0 90.88 L15.94 90.88 L21.26 93.53 L15.94 96.19 L0 96.19 L0 93.53 Z" class="st4"/>
+			<text x="0.73" y="87.17" class="st3" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>clk<tspan class="st5"
+						v:langID="1033">0</tspan></text>		</g>
+		<g id="shape12-33" v:mID="12" v:groupContext="shape" v:layerMember="0" transform="translate(2.74248,-25.0681)">
+			<title>工作表.12</title>
+			<desc>clk1</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Form" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="visDescription" v:val="VT4(单向或双向输入/输出端口。 )"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(1,1,1,1)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="10.6299" cy="84.4746" width="26.75" height="12.8036"/>
+			<path d="M0 93.53 L0 90.88 L15.94 90.88 L21.26 93.53 L15.94 96.19 L0 96.19 L0 93.53 Z" class="st4"/>
+			<text x="0.73" y="87.17" class="st3" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>clk<tspan class="st5"
+						v:langID="1033">1</tspan></text>		</g>
+		<g id="shape13-37" v:mID="13" v:groupContext="shape" v:layerMember="1" transform="translate(24.0023,-27.2102)">
+			<title>动态连接线</title>
+			<path d="M0 95.68 L31.57 95.68 L31.57 82.53" class="st1"/>
+		</g>
+		<g id="shape14-40" v:mID="14" v:groupContext="shape" v:layerMember="1" transform="translate(24.0023,-82.059)">
+			<title>动态连接线.14</title>
+			<path d="M0 97.52 L31.57 97.52 L31.57 109.04" class="st1"/>
+		</g>
+		<g id="shape15-43" v:mID="15" v:groupContext="shape" v:layerMember="0" transform="translate(143.831,-52.3838)">
+			<title>工作表.15</title>
+			<desc>clkout</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Form" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="visDescription" v:val="VT4(单向或双向输入/输出端口。 )"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(1,1,1,1)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="10.6299" cy="84.4746" width="36.65" height="12.8036"/>
+			<path d="M0 93.53 L0 90.88 L15.94 90.88 L21.26 93.53 L15.94 96.19 L0 96.19 L0 93.53 Z" class="st4"/>
+			<text x="-4.21" y="87.17" class="st3" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>clk<tspan class="st5"
+						v:langID="1033">out</tspan></text>		</g>
+		<g id="shape16-47" v:mID="16" v:groupContext="shape" v:layerMember="1" transform="translate(112.263,-47.9546)">
+			<title>动态连接线.16</title>
+			<path d="M0 89.1 L31.57 89.1" class="st1"/>
+		</g>
+		<g id="shape17-50" v:mID="17" v:groupContext="shape" v:layerMember="0" transform="translate(45.2622,-0.12)">
+			<title>工作表.17</title>
+			<desc>sel</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Form" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="visDescription" v:val="VT4(单向或双向输入/输出端口。 )"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(1,1,1,1)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="10.6299" cy="84.4746" width="21.8" height="12.8036"/>
+			<path d="M0 93.53 L0 90.88 L15.94 90.88 L21.26 93.53 L15.94 96.19 L0 96.19 L0 93.53 Z" class="st4"/>
+			<text x="3.21" y="87.17" class="st3" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>sel</text>		</g>
+		<g id="shape18-53" v:mID="18" v:groupContext="shape" v:layerMember="1" transform="translate(66.522,-2.77748)">
+			<title>动态连接线.18</title>
+			<path d="M0 96.19 L19.27 96.19 L19.27 64.25" class="st1"/>
+		</g>
+	</g>
+</svg>
