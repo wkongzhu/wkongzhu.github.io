@@ -6,6 +6,7 @@ tags: [systemverilog]
 title: "用class封装verilog验证module"
 ---
 
+
 UVM已经开始流行，对于新的项目，可以考虑用UVM进行全新的验证环境开发。 
 
 但是，实际情况，项目是具有延续性的，好多以前的验证环境如今还是要继续使用。于是，出现一个问题：在升级的项目中，我想使用UVM，但是以前的bus behavior model 是用verilog  module写的。而使用uvm的编程风格，我们希望将某个协议相关的一系列class封装到一个package中，便于将来复用.  

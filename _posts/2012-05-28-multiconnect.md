@@ -6,13 +6,14 @@ tags: [TLM]
 title: "tlm_fifo的多对一，一对多连接实例"
 ---
 
+
 在TLM based的验证环境中，往往会碰到这样的需求：将来自不同地方的数据源进行统一处理。比如在USB的物理层driver建模中，packet来自不同的device，在物理层统一发送出去。 
 
 TLM的建模方式提供了多对一的连接方式，为了演示这个功能，特此写了一个小程序。 
 
 程序的结构如下： 
 
-![multiconnect](img/multi-connect.svg)
+![multiconnect](/img/multi-connect.svg)
 
 声明了一个fifo, fifo的get_export, put_export都有3个连接。 
 
