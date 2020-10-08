@@ -2,8 +2,8 @@
 layout: post
 tagline: "Supporting tagline"
 author: Zhu,YH
-category: Digital
-tags: [ICDesign]
+category: verification
+tags: [verification]
 title: "systemverilog语法浏览"
 ---
 
