@@ -51,11 +51,18 @@ m和A是两个随机事件，事件m发生的概率为$p(m)$; 事件A发生的�
 再来计算熵。令X={A,B}, Y={m,n}; 可以这样理解，s为起点，m、n为终点； A、B点为中途的驿站。
 
 - $H(X) = \sum{p_i log2(1/p_i)}=1/2log2(2) + 1/2log2(2)=1$, 即，驿站的熵为1bit
-- $H(Y) =p(m)log2(1/p(m))+p(n)log2(1/p(n))=5/8log2(8/5)+3/8log2(8/3)= 0.9544$, 即，终点的熵为0.811bit
-- $$H(Y\vert X)=p(A) (p(m\vert A)log2(1/p(m\vert A)) + p(n\vert A)log2(1/p(n\vert A)) ) \\ + p(B) (p(m\vert A)log2(1/p(m\vert B)) + p(n\vert B)log2(1/p(n\vert B)) ) \\ =1/2(3/4log2(4/3)+1/4log2(4)) + 1/2(1/2log2(2)+1/2log2(2))=0.9056$$
-  条件熵的定义，遍历条件，计算每个条件发生的情况下目标事件的熵。然后用条件本身的概率作为权重做平均。互信息定义$I(Y,X) =H(Y)-H(Y\vert X)=0.04879$
-- $$H(X\vert Y) =p(m)(p(A\vert m)log2(1/p(A\vert m))+p(B\vert m)log2(1/p(B\vert m))) \\ + p(n)(p(A\vert n)log2(1/p(A\vert n))+p(B\vert n)log2(1/p(B\vert n))) \\ = 5/8(3/5log2(5/3)+2/5log2(5/2)) + 3/8(1/3log2(3)+2/3log2(3/2))= 0.9512$$
-  互信息$I(X,Y) = H(X) - H(X\vert Y) = 0.04879$, 可以看出，$I(X,Y) = I(Y,X)$，和理论一致。
 
+- $H(Y) =p(m)log2(1/p(m))+p(n)log2(1/p(n))=5/8log2(8/5)+3/8log2(8/3)= 0.9544$, 即，终点的熵为0.9544bit
+
+- $$H(Y\vert X)=p(A) (p(m\vert A)log2(1/p(m\vert A)) + p(n\vert A)log2(1/p(n\vert A)) ) \\ + p(B) (p(m\vert A)log2(1/p(m\vert B)) + p(n\vert B)log2(1/p(n\vert B)) ) \\ =1/2(3/4log2(4/3)+1/4log2(4)) + 1/2(1/2log2(2)+1/2log2(2))=0.9056$$
+  
+
+  条件熵的定义，遍历条件，计算每个条件发生的情况下目标事件的熵。然后用条件本身的概率作为权重做平均。互信息定义$I(Y,X) =H(Y)-H(Y\vert X)=0.04879$
+  
+- $$H(X\vert Y) =p(m)(p(A\vert m)log2(1/p(A\vert m))+p(B\vert m)log2(1/p(B\vert m))) \\ + p(n)(p(A\vert n)log2(1/p(A\vert n))+p(B\vert n)log2(1/p(B\vert n))) \\ = 5/8(3/5log2(5/3)+2/5log2(5/2)) + 3/8(1/3log2(3)+2/3log2(3/2))= 0.9512$$
+  
+
+  互信息$I(X,Y) = H(X) - H(X\vert Y) = 0.04879$, 可以看出，$I(X,Y) = I(Y,X)$，和理论一致。
+  
 - 互信息$H(Y\vert X)$是指, 知道了X之后, 对了解Y提供了多少信息. 通过图,可以看出, 知道了中途驿站A或者B,  对于了解到达哪个终点m或n是否有帮助. 我们可以分析, 如果途经A, 那么终点站是m的可能性更大. 如果途径B, 则终点站m/n的概率还是一样的. 整体来收, 知道了中途站点, 对判断终点站还是有一定帮助的.所以$H(X\vert Y) > 0$. 但是帮助不太大, 所以值显得很小.
   
