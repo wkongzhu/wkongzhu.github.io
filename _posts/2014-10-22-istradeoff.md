@@ -24,63 +24,65 @@ title: "ICDesign"
 - 在相同的工艺制程，相同的IP Vendor(包括相同的标准单元)条件下，同一个功能，不同的电路实现方案，有可能会出现方案A比方案B面积大，速度慢，功耗高。下面用一个6分频电路示例来进行说明：
 
   -  **方案A**：
-    
-```verilog
-    module div6_A(
-    	      input 	   clki,
-    	      input 	   rst_n,
-    	      output logic clko);
-      logic [2:0] 	     cnt;
-    
-      always @(posedge clki or negedge rst_n) begin
-        if(!rst_n)
-          cnt <= 3'd1;
-        else if(cnt == 3'd6)
-          cnt <= 3'd1;
-        else
-          cnt <= cnt + 3'd1;
-      end
-    
-      assign clko = cnt[2];
-    
-    endmodule
-    ```
-    
-
-    
-- **方案B**：
   
-  ```verilog
-    module div6_B (
-    	       input 	    clki,
-    	       input 	    rst_n,
-    	       output logic clko);
-      logic [2:0] 		    cnt;
-      
-      always @(posedge clki or negedge rst_n) begin
-        if(!rst_n)
-          cnt <= 0;
-        else
-          cnt <= {cnt[1:0], ~cnt[2]};
-      end
-    
-      assign clko = cnt[2];
-    
-    endmodule
-    ```
+     ```verilog
+     module div6_A(
+     	      input 	   clki,
+     	      input 	   rst_n,
+     	      output logic clko);
+       logic [2:0] 		   cnt;
+     
+       always @(posedge clki or negedge rst_n) begin
+         if(!rst_n)
+           cnt <= 3'd1;
+         else if(cnt == 3'd6)
+           cnt <= 3'd1;
+         else
+           cnt <= cnt + 3'd1;
+       end
+     
+       assign clko = cnt[2];
+     
+     endmodule
+     ```
   
-  上面的电路，功能一模一样，都实现了时钟6分频。方案A的使用了加法， 方案B采用了循环移位。分析如下:
+     
+  
+  -  **方案B**
+  
+     ```verilog
+     module div6_B (
+     	       input 	    clki,
+     	       input 	    rst_n,
+     	       output logic clko);
+       logic [2:0] 		    cnt;
+       
+       always @(posedge clki or negedge rst_n) begin
+         if(!rst_n)
+           cnt <= 0;
+         else
+           cnt <= {cnt[1:0], ~cnt[2]};
+       end
+     
+       assign clko = cnt[2];
+     
+     endmodule
+     ```
+  
+       
+  
+     上面的电路，功能一模一样，都实现了时钟6分频。方案A的使用了加法， 方案B采用了循环移位。分析如下:
   
   -  加法比移位的逻辑电路多，方案A的面积比方案B大；
-    -  加法需要的逻辑路径长，因此方案A的最快工作频率低于方案B
-    -  方案B逻辑少，数据变化产生的节点电压变化少，并且，方案B类似格雷码，触发器的跳变次数也比方案A要少，因此方案B的功耗小。
   
-  ​        
-  
-   综上所述，方案A比方案B，面积大，速度慢，功耗高。彻底的完败。
-  
-  因此，在实际电路设计中，不要仅仅考虑功能实现，需要多想想是否有更好的解决方案，让面积，速度，功耗表现更佳；优秀的工程师和平庸的工程师设计出来的产品会有巨大的差异，竞争力体现在人才的智慧上，聪明的大脑在芯片设计中至关重要。我们每个设计工程师都要力争成为智慧的工程师。
-  
-   
-  
-  2）同样的数字电路，选择不同的标准单元库，有可能会出现标准单元库A的实现，比标准单元库B的实现面积大，功耗大，速度也慢。可以参考上面的解释，因为不同的标准单元库是不同的人设计出来的，也有聪明和平庸之分。即使同一个Vendor的不同标准单元库，也可能会发现新的改进库比原来的面积，速度，功耗都要优。模拟IP也如此，不同的Vendor有差异。 由于IP  库的差异，对设计工程师提出了更多要求，要求芯片设计者能够甄别比较优秀的IP，从而提升产品的整体竞争力。IP如果选择了比较平庸的，将来产品的竞争力就会大打折扣。
+  -  加法需要的逻辑路径长，因此方案A的最快工作频率低于方案B
+  -  方案B逻辑少，数据变化产生的节点电压变化少，并且，方案B类似格雷码，触发器的跳变次数也比方案A要少，因此方案B的功耗小。
+
+ 综上所述，方案A比方案B，面积大，速度慢，功耗高。彻底的完败。
+
+因此，在实际电路设计中，不要仅仅考虑功能实现，需要多想想是否有更好的解决方案，让面积，速度，功耗表现更佳；优秀的工程师和平庸的工程师设计出来的产品会有巨大的差异，竞争力体现在人才的智慧上，聪明的大脑在芯片设计中至关重要。我们每个设计工程师都要力争成为智慧的工程师。
+
+ 
+
+2）同样的数字电路，选择不同的标准单元库，有可能会出现标准单元库A的实现，比标准单元库B的实现面积大，功耗大，速度也慢。可以参考上面的解释，因为不同的标准单元库是不同的人设计出来的，也有聪明和平庸之分。即使同一个Vendor的不同标准单元库，也可能会发现新的改进库比原来的面积，速度，功耗都要优。模拟IP也如此，不同的Vendor有差异。 由于IP  库的差异，对设计工程师提出了更多要求，要求芯片设计者能够甄别比较优秀的IP，从而提升产品的整体竞争力。IP如果选择了比较平庸的，将来产品的竞争力就会大打折扣。
+
