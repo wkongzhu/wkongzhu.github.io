@@ -3,7 +3,7 @@ layout: post
 tagline: "Supporting tagline"
 category: Digital
 tags: [Design]
-title: "ICDesign"
+title: "速度,面积,功耗永远都是折中的吗?"
 ---
 
 在芯片设计中，大家通常都会注意到几个重要的指标：
