@@ -3,7 +3,7 @@
  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
  <script type="text/javascript">
      var gitalk = new Gitalk({
-            id: '{{ page.url }}', 
+            id: decodeURI('{{ page.url }}'), 
             clientID: '7dd9e76a25630a9b2f98'
             clientSecret: 'a9cfb8d02ff5411c7de9658d68a1f5d4a28d451a'
             repo: 'comments',
