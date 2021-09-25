@@ -26,7 +26,7 @@ author :
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
 encoding: utf-8
-production_url : http://wkongzhu.github.io
+production_url : https://wkongzhu.github.io
 highlighter: rouge
 kramdown:
   syntax_highlighter_opts: 
@@ -87,27 +87,20 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : facebook
-    disqus :
-      short_name : jekyllbootstrap
-    livefyre :
-      site_id : 123
-    intensedebate :
-      account : 123abc
-    facebook :
-      appid : 123
-      num_posts: 5
-      width: 580
-      colorscheme: light
-    duoshuo :
-      short_name : jekyllbootstrap
-   
+    gitalk : true
+    clientID : 7dd9e76a25630a9b2f98
+    secret : a9cfb8d02ff5411c7de9658d68a1f5d4a28d451a
+    repo : wkongzhu.github.io
+    owner : wkongzhu
+    admin : ['wkongzhu']
+    id : 'Demo'
+    distractionFreeMode : true
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
   #        
   analytics :
-    provider : google
+    provider : false
     gauges :
         site_id : 'SITE ID'
     google : 
@@ -126,7 +119,7 @@ JB :
   # Set 'provider' to false to turn sharing off globally.
   #
   sharing :
-    provider : tweet
+    provider : false
     
   # Settings for all other include helpers can be defined by creating 
   # a hash with key named for the given helper. ex:
