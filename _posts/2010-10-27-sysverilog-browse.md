@@ -11,7 +11,7 @@ title: "systemverilog语法浏览"
 
 来源：http://systemverilog.co/wiki/Objects_and_Classes（可惜此来源已经不复存在)
 
-### 类是Systemverilog中许多关键概念的核心。 
+## 类是Systemverilog中许多关键概念的核心。 
 
 1. 和其他面向对象的语言相似，类是面向对象的关键
 2. 类对象通过引用传递，而其他Systemverilog类型通过值传递。 
